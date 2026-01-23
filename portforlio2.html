@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudip Kumar Singh - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.6; }
+        }
+
+        /* Hero with Typing Effect */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content h1 {
+            font-size: 5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .typing-text {
+            font-size: 2em;
+            color: #ffd700;
+            min-height: 60px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.5em;
+            background: #ffd700;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2em;
+            color: #ffd700;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(20px); }
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        /* Interactive Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-box:hover::before {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .stat-number {
+            font-size: 4em;
+            font-weight: 900;
+            color: #ffd700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Project Showcase with Live Preview */
+        .project-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #1a1a00 0%, #0a0a00 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.4);
+            border-color: #ffd700;
+        }
+
+        .project-mockup {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #2a2a0a 0%, #1a1a00 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-browser {
+            width: 90%;
+            height: 90%;
+            background: #0a0a00;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .browser-bar {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .browser-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-btn {
+            flex: 1;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Skills Radar Chart */
+        .skills-visual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-item {
+            text-align: center;
+        }
+
+        .skill-circle {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .skill-circle::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            border: 8px solid #ffd700;
+            clip-path: circle(50% at 50% 0);
+            transition: clip-path 0.4s;
+        }
+
+        .skill-item:hover .skill-circle {
+            transform: scale(1.1);
+        }
+
+        .skill-item:hover .skill-circle::before {
+            clip-path: circle(50% at 50% 50%);
+        }
+
+        .skill-name {
+            font-size: 1.2em;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .skill-level {
+            color: #999;
+        }
+
+        /* Timeline Visualization */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, transparent, #ffd700, transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: #ffd700;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            z-index: 1;
+        }
+
+        .timeline-content h3 {
+            color: #ffd700;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .company {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Interactive CV Section */
+        .cv-section {
+            background: linear-gradient(135deg, #1a1a00 0%, #0a0a00 100%);
+            border-radius: 30px;
+            padding: 60px;
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .cv-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .cv-title {
+            font-size: 2.5em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .cv-description {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
+            transition: all 0.4s;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.7);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+         /* Make entire card clickable */
+        .contact-card a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .contact-card:hover a {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3em; }
+            .typing-text { font-size: 1.5em; }
+            .section-title { font-size: 2.5em; }
+            .project-showcase { grid-template-columns: 1fr; }
+            .timeline::before { left: 30px; }
+            .timeline-item:nth-child(even) .timeline-content { margin-left: 0; }
+            .timeline-content { width: calc(100% - 80px); margin-left: 80px !important; }
+            .cv-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section with Typing Effect -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>SUDIP KUMAR SINGH</h1>
+            <div class="typing-text">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
+            <div class="scroll-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Interactive Stats -->
+    <section style="background: linear-gradient(180deg, #000 0%, #0a0a00 100%);">
+        <div class="container">
+            <h2 class="section-title">Impact in Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Years Building</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">SLA Achieved</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Developers Hired</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">20%</div>
+                    <div class="stat-label">Cost Reduced</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-showcase">
+                <div class="project-card">
+                    <div class="project-mockup">
+                        <div class="mockup-browser">
+                            <div class="browser-bar">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <div class="browser-content">
+                                🤖
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Question Answering Tool</h3>
+                        <p>Production-ready web application powered by Google's Gemini API.
+                            Features real-time AI responses,
+                            secure credential management,
+                            and professional error handling.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Google Gemini</span>
+                            <span class="tech-tag">API Integration</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ai-question-tool-r7kxtxiuhfdtym7nnlbxad.streamlit.app"
+                               class="project-btn btn-primary">Try Live Demo</a>
+                            <a href="https://github.com/saaniawaghani/ai-question-tool#readme"
+                               class="project-btn btn-secondary">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Visualization -->
+    <section style="background: linear-gradient(180deg, #0a0a00 0%, #000 100%);">
+        <div class="container">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="skills-visual">
+                <div class="skill-item">
+                    <div class="skill-circle">⚡</div>
+                    <div class="skill-name">Backend</div>
+                    <div class="skill-level">Node.js • Python</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-circle">☁️</div>
+                    <div class="skill-name">Cloud</div>
+                    <div class="skill-level">AWS • Lambda • S3</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-circle">🗄️</div>
+                    <div class="skill-name">Database</div>
+                    <div class="skill-level">MySQL • DynamoDB</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-circle">🔧</div>
+                    <div class="skill-name">DevOps</div>
+                    <div class="skill-level">Git • Jenkins • CI/CD</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-circle">🤖</div>
+                    <div class="skill-name">AI</div>
+                    <div class="skill-level">Gemini API • Prompt Eng</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-circle">👥</div>
+                    <div class="skill-name">Leadership</div>
+                    <div class="skill-level">Tech Recruitment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Support Specialist</h3>
+                        <div class="company">Sara Enterprises</div>
+                        <div class="date">Jan 2023 - Sep 2025</div>
+                        <p>Led incident management achieving 98% SLA.
+                            Built Node.js automation tools reducing tracking time by 40%.
+                            Managed AWS infrastructure with 99.5% uptime.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Backend Developer</h3>
+                        <div class="company">Tata Consultancy Services</div>
+                        <div class="date">Sep 2018 - May 2022</div>
+                        <p>Built Node.js microservices on AWS reducing costs by 20%.
+                             Designed RESTful APIs for high-traffic applications.
+                            Conducted 50+ technical interviews annually.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section style="background: #000000;">
+        <div class="container">
+            <div class="cv-section">
+                <div class="cv-content">
+                    <div class="cv-icon">📄</div>
+                    <h2 class="cv-title">Want the Full Story?</h2>
+                    <p class="cv-description">
+                        Download my complete CV with detailed experience, projects, certifications, and achievements.
+                        Perfect for a deeper dive into my technical journey and capabilities.
+                    </p>
+                    <a href="Sudip_Singh_Python_Developer1.pdf" class="cv-download-btn" download>
+                        ⬇️ Download Complete CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.3em; margin-bottom: 20px;">
+                Currently based in Abu Dhabi, UAE • Immediately Available
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:nishantsingh.sudeep@gmail.com">
+                        nishantsingh.sudeep@gmail.com
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/sudip-kumar-singh-b80479172/" target="_blank">
+                        Connect with me
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/singh-sudeep" target="_blank">View my code</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+971507160340">+971 50 716 0340</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sudip Kumar Singh • Backend Developer • AI Enthusiast</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Built with passion 💛</p>
+    </footer>
+
+    <script>
+        // Create animated particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Typing effect
+        const phrases = [
+            'Backend Developer',
+            'Digital Marketing Specialist',
+            'Graphics Designer',
+            'SEO Expert',
+            'Problem Solver'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedText = document.getElementById('typed-text');
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing effect
+        setTimeout(type, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
