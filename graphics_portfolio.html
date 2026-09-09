@@ -470,93 +470,27 @@
             line-height: 1.6;
         }
 
-        /* Interactive CV Section */
-        .cv-section {
-            background: linear-gradient(135deg, #1a1a00 0%, #0a0a00 100%);
-            border-radius: 30px;
-            padding: 60px;
-            border: 3px solid rgba(255, 215, 0, 0.4);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cv-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        .cv-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cv-icon {
-            font-size: 5em;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
 
-        .cv-title {
-            font-size: 2.5em;
-            color: #ffd700;
-            margin-bottom: 20px;
-        }
-
-        .cv-description {
-            font-size: 1.2em;
-            color: #ccc;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .cv-download-btn {
+        .bullet-points {
             display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #000;
-            padding: 20px 50px;
-            border-radius: 50px;
+            gap: 10px;
+            color: #ffffff;
+            padding: 10px 5px;
             text-decoration: none;
             font-size: 1.3em;
             font-weight: 700;
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
             transition: all 0.4s;
         }
-
-        .cv-download-btn:hover {
+        .bullet-points:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.7);
-        }
-        .portfolio-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, #47a301 0%, #03a55e 100%);
-            color: #000;
-            padding: 20px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: 700;
-            box-shadow: 0 10px 40px rgba(5, 106, 25, 0.5);
-            transition: all 0.4s;
-        }
-        .portfolio-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(13, 55, 0, 0.7);
+            background: linear-gradient(135deg, #ece183 30%, #03a55e 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Contact Section */
@@ -643,7 +577,7 @@
     <!-- Hero Section with Typing Effect -->
     <div class="hero">
         <div class="hero-content">
-            <h1>SUDIP KUMAR SINGH</h1>
+            <h1>Welcome to My Portfolio</h1>
             <div class="typing-text">
                 <span id="typed-text"></span><span class="cursor"></span>
             </div>
@@ -657,16 +591,16 @@
             <h2 class="section-title">Impact in Numbers</h2>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number">4+</div>
-                    <div class="stat-label">Years Building</div>
-                </div>
-                <div class="stat-box">
                     <div class="stat-number">10+</div>
-                    <div class="stat-label">Backend Features</div>
+                    <div class="stat-label">Website Designed and Developed</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">30%</div>
-                    <div class="stat-label">Optimization in Backend</div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Social Accounts</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Digital Presence</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">1000+</div>
@@ -681,43 +615,30 @@
     <!-- Skills Visualization -->
     <section style="background: linear-gradient(180deg, #0a0a00 0%, #000 100%);">
         <div class="container">
-            <h2 class="section-title">Technical Arsenal</h2>
+            <h2 class="section-title">Tools & Creative</h2>
             <div class="skills-visual">
                 <div class="skill-item">
-                    <div class="skill-circle">⚡</div>
-                    <div class="skill-name">Backend</div>
-                    <div class="skill-level">• Python (Django | Flask ) • Node.js</div>
+                    <div class="skill-circle">🎨</div>
+                    <div class="skill-name">Creative Tools</div>
+                    <div class="skill-level">• Photoshop • Illustrator • Canva  </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-circle">🖥️</div>
-                    <div class="skill-name">Frontend</div>
-                    <div class="skill-level">• Vue.js • JavaScript • TypeScript • HTML • CSS</div>
+                    <div class="skill-circle">🎬 </div>
+                    <div class="skill-name">Video Editing</div>
+                    <div class="skill-level">• Filmora • CapCut • Premiere Pro</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-circle">☁️</div>
-                    <div class="skill-name">Web Servers</div>
-                    <div class="skill-level">• AWS • cPanel • Hostinger</div>
+                    <div class="skill-circle">📈</div>
+                    <div class="skill-name">SEO</div>
+                    <div class="skill-level">• Google Analytics • Search Console • Yoast SEO</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-circle">🗄️</div>
-                    <div class="skill-name">Database</div>
-                    <div class="skill-level">• MySQL • PosgreSQL • Mongodb</div>
+                    <div class="skill-circle">📢</div>
+                    <div class="skill-name">Digital Marketing</div>
+                    <div class="skill-level">• Google Ads • Meta Ads • Social Media Marketing • Content Creation</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-circle">🔧</div>
-                    <div class="skill-name">CI/CD</div>
-                    <div class="skill-level">• Git • Github Actions • Docker</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-circle">🤖</div>
-                    <div class="skill-name">AI</div>
-                    <div class="skill-level">• Gemini API • Prompt Eng</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-circle">👥</div>
-                    <div class="skill-name">Graphics & Digital Marketing</div>
-                    <div class="skill-level">• Meta | Google | Tiktok Ads & Campaign </div>
-                </div>
+            </div>
+        </div>
             </div>
         </div>
     </section>
@@ -730,104 +651,47 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Web Developer & Digital Marketing</h3>
-                        <div class="company">Nayel Style, Abu Dhabi, UAE</div>
-                        <div class="date">February 2025 – Present</div>
+                        <h3>Website Designed and Deployed</h3>
                         <p>
-                            &bull; Designed and developed responsive e-commerce websites,
-                            improving user engagement and online sales.<br>
-                            &bull; Meta Advertisements, Google Ads, Snapchat Ads.<br>
-                            &bull; API integration for Shipping and Payment Systems.<br>
-                            &bull; Optimized website SEO and performance, leading to
-                            a 30% increase in organic traffic.<br>
-                            &bull; Created and managed social media content, increasing brand reach and engagement.<br>
-                            &bull; Photography and Video Editing for Advertisement.<br>
+                            🌐 <a href="https://heartofrak.com/en" class="bullet-points">Heart of Rak</a><br>
+                            🌐 <a href="https://jackartgallery.ae/" class="bullet-points">Jack Art Gallery</a><br>
+                            🌐 <a href="https://www.nepalfootprintholiday.com/" class="bullet-points">Nepal FootPrint</a><br>
+                            🌐 <a href="https://bfi.com.np/" class="bullet-points">Bright Future International</a><br>
+                            <h3 > and so on ... </h3>
                         </p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Backend Developer</h3>
-                        <div class="company">Aayulogic Pvt Ltd, Kathmandu, Nepal</div>
-                        <div class="date">May 2022 - March 2024</div>
+                        <h3>Social Profiles</h3>
                         <p>
-                            &bull; Developed and maintained scalable, high-performance
-                            backend systems using Django Implemented API integrations,
-                            RBAC, and Authentications and Authorizations.<br>
-                            &bull; Reduced page load times by 20% through efficient database query optimization.<br>
-                            &bull; Design the architecture for the new feature and develop the
-                                feature in tight deadline.<br>
-                            &bull; Configuring Nginx for request handling and file security.<br>
-                            &bull; Configure and Monitor Docker for CI/CD within the organization. <br>
-                            &bull; Handling Feature updates for client, patch and version updates.<br>
+                            📱 <a href="https://www.instagram.com/pure_home_realestate/?hl=en"
+                                 class="bullet-points">PureHome Real Estate</a><br>
+                            📱 <a href="https://www.instagram.com/muller_uae/?hl=en"
+                                 class="bullet-points">Muller UAE</a><br>
+                            📱 <a href="https://www.instagram.com/nayelstyle/"
+                                 class="bullet-points">Nayel Style</a><br>
+                            📱 <a href="https://www.facebook.com/profile.php?id=61585637557008"
+                                 class="bullet-points">Ivory Nest</a><br>
+                            <h3 > and so on ... </h3>
                         </p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Python Developer (Odoo) </h3>
-                        <div class="company">Nexus Incorporation Pvt. Ltd, Kathmandu</div>
-                        <div class="date">April 2023 - April 2024 (Part-time)</div>
-                        <p>&bull; Designed custom Odoo modules tailored to business
-                            requirements, improving workflow efficiency. <br>
-                            &bull; Integrated Odoo with third-party APIs and payment
-                            gateways, streamlining operations. <br>
-                            &bull; Ensured data security and backup solutions for critical
-                            business applications.<br>
+                        <h3>Graphics Designs</h3>
+                        <p>
+                            <a href="graphics_designs.html" class="bullet-points">
+                                Let's See Some of My Designs
+                            </a>
                         </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Senior Graphics Designer</h3>
-                        <div class="company">Nebira Technology Pvt. Ltd, Kathmandu</div>
-                        <div class="date">April 2022 - June 2024</div>
-                        <p>&bull; Develop and maintain brand guidelines, ensuring consistency
-                            across all marketing collateral. <br>
-                            &bull; Create designs for a wide range of printing materials
-                            (brochures, flyers, signage, corporate gifts, packaging, etc.) <br>
-                            &bull; Ensure all designs are production-ready, with correct
-                            specifications and file formats. <br>
-                            &bull; Work closely with clients to understand their design
-                            requirements and provide creative solutions to team members.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CV Download Section -->
-    <section style="background: #000000;">
-        <div class="container">
-            <div class="cv-section">
-                <div class="cv-content">
-                    <div class="cv-icon">📄</div>
-                    <h2 class="cv-title">Want the Full Story?</h2>
-                    <p class="cv-description">
-                        Download my complete CV with detailed experience, projects, certifications, and achievements.
-                        Perfect for a deeper dive into my technical journey and capabilities.
-                    </p>
-                    <a href="Sudip_Singh_Python_Developer1.pdf" class="cv-download-btn" download>
-                        ⬇️ Download Complete CV
-                    </a>
-                    <br>
-                    <br>
-                    <br>
-                    <p class="cv-description">
-                        Have a look of my portfolio.
-                    </p>
-                    <a href="graphics_portfolio.html" class="portfolio-btn">
-                        ⬇️ Portfolio
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
     <section>
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
@@ -882,11 +746,10 @@
 
         // Typing effect
         const phrases = [
-            'Backend Developer',
-            'Digital Marketing Specialist',
-            'Graphics Designer',
-            'SEO Expert',
-            'Problem Solver'
+            'What you see here is only a part of what I’ve worked on. ' +
+            'From building websites and APIs to improving online visibility, ' +
+            'creating graphics, editing videos, and managing digital marketing, ' +
+            'I enjoy turning ideas into meaningful digital experiences.'
         ];
         let phraseIndex = 0;
         let charIndex = 0;

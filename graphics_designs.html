@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudip Kumar Singh - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0.3;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.6; }
+        }
+
+        /* Hero with Typing Effect */
+        .hero {
+            /*height: 100vh;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            /*background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);*/
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .typing-text {
+            font-size: 1.2em;
+            color: #ffd700;
+            min-height: 60px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #ffd700;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(20px); }
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+
+        .project-info h3 {
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+         /* Make entire card clickable */
+        .contact-card a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .contact-card:hover a {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3em; }
+            .typing-text { font-size: 1.5em; }
+            .section-title { font-size: 2.5em; }
+
+        }
+
+        /* ================================
+           ARTISTIC GRAPHICS SHOWCASE
+           ================================ */
+
+        .graphics-showcase {
+            width: 100%;
+            max-width: 1050px;
+            margin-left: 0 !important;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        /* Gallery */
+        .design-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin: 25px 0 30px;
+        }
+
+        /* Individual Design Card */
+        .design-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            border-radius: 14px;
+
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            background: #0b0b0b;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.45s ease,
+                box-shadow 0.45s ease,
+                border-color 0.45s ease;
+        }
+
+        /* Dark overlay */
+        .design-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                180deg,
+                transparent 45%,
+                rgba(0, 0, 0, 0.88) 100%
+            );
+
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Image */
+        .design-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            display: block;
+
+            transition: transform 0.6s ease;
+        }
+
+        /* Design title */
+        .design-card span {
+            position: absolute;
+
+            left: 16px;
+            bottom: 14px;
+
+            z-index: 2;
+
+            color: #fff;
+
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+
+            opacity: 0;
+
+            transform: translateY(10px);
+
+            transition: all 0.4s ease;
+        }
+
+        /* Hover */
+        .design-card:hover {
+            transform: translateY(-8px) rotate(-0.5deg);
+
+            border-color: #ffd700;
+
+            box-shadow:
+                0 18px 45px rgba(255, 215, 0, 0.22);
+        }
+
+        /* Image zoom */
+        .design-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Show overlay */
+        .design-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Show title */
+        .design-card:hover span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section with Typing Effect -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Graphics Designs</h1>
+            <div class="typing-text">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="timeline-content graphics-showcase">
+            <div class="design-gallery" id="designGallery"></div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.3em; margin-bottom: 20px;">
+                Currently based in Abu Dhabi, UAE • Immediately Available
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:nishantsingh.sudeep@gmail.com">
+                        nishantsingh.sudeep@gmail.com
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/sudip-kumar-singh-b80479172/" target="_blank">
+                        Connect with me
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/singh-sudeep" target="_blank">View my code</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+971507160340">+971 50 716 0340</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sudip Kumar Singh • Backend Developer • AI Enthusiast</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Built with passion 💛</p>
+    </footer>
+
+    <script>
+        // Create animated particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Typing effect
+        const phrases = [
+            'A glimpse of my creative work — posters, social media creatives, ' +
+            'promotional designs and visual content. ' +
+            'This is only a part of what I’ve worked on.'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedText = document.getElementById('typed-text');
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing effect
+        setTimeout(type, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // For loop for images
+
+        const designs = [
+            "Brown Minimalist Steak Instagram Post.png",
+            "Car Denting and Painting.jpg",
+            "Design 1.jpg",
+            "Design 2.jpg",
+            "Design 3 PSD Background Modified.jpg",
+            "Design 3 PSD copy.jpg",
+            "Design 4 copy.jpg",
+            "Emirati omen's Day.png",
+            "Green and Brown Modern Restaurant Flyer.png",
+            "Happy.jpg",
+            "Nebira Technology LOGO.jpeg",
+            "Purehome Fairmont.jpg",
+            "Purehome Yas ISland.jpg",
+            "Purehome Yas Villa.jpg",
+            "Vedas College Boucher.jpeg",
+            "Website Design 1.jpeg",
+            "Website Design 2.jpeg",
+            "Women's Day Design.png",
+            "www.nayelstyle.com.png",
+            "www.purehome-re.ae.png"
+        ];
+
+        const gallery = document.getElementById("designGallery");
+
+        designs.forEach((file, index) => {
+
+            const encodedFile = encodeURIComponent(file);
+
+            gallery.innerHTML += `
+                <a href="graphics/${encodedFile}"
+                   class="design-card"
+                   target="_blank">
+
+                    <img src="graphics/${encodedFile}"
+                         alt="Graphic Design ${index + 1}">
+
+                    <span>Graphic Design</span>
+
+                </a>
+            `;
+
+        });
+
+    </script>
+</body>
+</html>
